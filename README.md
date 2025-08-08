@@ -218,7 +218,7 @@ If this helps your work, please cite the repository and acknowledge:
 
 ## 🚨 Medical Disclaimer
 
-```text
+
 This software is provided strictly for educational and research purposes.
 It is NOT intended for use in diagnosis, treatment, or any clinical decision-making.
 
@@ -227,7 +227,7 @@ for any medical conclusions.
 
 Use at your own risk. The authors and contributors assume no responsibility
 for any consequences arising from the use of this code.
-```
+
 
 
 
