@@ -1,5 +1,8 @@
 # ECG-processing-stack
-full ECG processing stack: realistic signal synthesis, denoising, QRS detection, HRV metrics (time/frequency/nonlinear), a simple AF-like irregularity screen, and rich visualizations — all in `ecg_hrv_pipeline.m`.
+
+Full ECG processing stack: realistic signal synthesis, denoising, QRS detection, HRV metrics (time/frequency/nonlinear), a simple AF-like irregularity screen, and rich visualizations — all in `ecg_hrv_pipeline.m`.
+
+---
 
 # ECG + HRV Advanced Pipeline (MATLAB)
 
@@ -16,7 +19,7 @@ full ECG processing stack: realistic signal synthesis, denoising, QRS detection,
   - Time domain: `meanNN`, `SDNN`, `RMSSD`, `pNN50`
   - Frequency domain (Welch PSD, LF/HF bands): `LFnu`, `HFnu`, band centers & powers
   - Nonlinear: Poincaré `SD1`, `SD2`
-- **AF-like screen (heuristic)**: flags when RR variability is high, autocorrelation low, and pNN50 elevated.
+- **AF-like screen (heuristic)**: Flags when RR variability is high, autocorrelation low, and pNN50 elevated.
 - **Visualization**: Noisy vs. clean ECG, filtered ECG with R-peaks, QRS-enhancement trace + threshold, tachogram, HRV PSD, Poincaré plot, LF/HF bars.
 
 ---
@@ -44,7 +47,7 @@ No external data files needed — the ECG is synthesized.
 
 ## 🛠️ Usage
 
-All parameters live at the top of the file.
+All parameters live at the top of the file:
 
 ```matlab
 % -------------------- PARAMETERS --------------------
@@ -63,8 +66,11 @@ add_baseline_wander = true;  baseline_amp_mV = 0.15; baseline_hz = 0.35;
 add_powerline       = true;  powerline_freq  = 50;   powerline_amp_mV = 0.05;
 ```
 
+---
 
 ## 📌 Examples
+
+```text
 Default (sinus rhythm)
     Just run ecg_hrv_pipeline.
 
@@ -76,20 +82,37 @@ North America mains
 
 Shorter demo
     Set dur_s = 60.
+```
+
+---
 
 ## 📊 Outputs
 
-Printed in Command Window:
+**Printed in Command Window:**
 
+```text
 HRV metrics struct with fields:
 meanNN_ms, sdnn_ms, rmssd_ms, pnn50, lfnu, hfnu,
 lf_power, hf_power, total_power,
 lf_center_hz, hf_center_hz,
 SD1_ms, SD2_ms, cv_rr, ac_lag1, af_screen_positive
+```
 
+**Figures:**
+
+1. Synthetic ECG with Noise (noisy + clean ground truth)  
+2. Filtered ECG + R-peaks (stem markers)  
+3. QRS Enhancement (integrated signal + threshold)  
+4. Tachogram (RR in ms)  
+5. HRV PSD (Welch) (0–0.5 Hz)  
+6. Poincaré plot with SD1/SD2 annotation  
+7. LF/HF normalized power bar chart  
+
+---
 
 ## 🔎 Methods (high level)
 
+```text
 RR generation:
     Quasi-sinusoidal LF/HF modulations or AF-like random jitter;
     rescaled to target SDNN.
@@ -119,9 +142,13 @@ Poincaré:
 AF-like screen (heuristic):
     cv(RR), pNN50, and lag-1 autocorrelation thresholding
     (informal; not a medical diagnostic).
+```
 
-## 🔧 Key functions (all included in the file)
+---
 
+## 🔧 Key functions
+
+```text
 generate_rr_series      — builds RR series (LF/HF or AF-like)
 synth_ecg_from_rr       — Gaussian-lobe beat template synthesis
 hp_filter, notch_filter, bp_filter — denoising stages (with/without SPT)
@@ -130,9 +157,13 @@ hrv_freq, hrv_psd, centroid        — frequency-domain HRV utilities
 poincare_SD1_SD2                   — nonlinear HRV metrics
 autocorr_stat                      — lagged autocorrelation for RR series
 ternary                            — tiny helper
+```
+
+---
 
 ## ⚠️ Notes & Caveats
 
+```text
 Educational/research demo only.
 The AF-like screen is a simple heuristic and must NOT be used for clinical purposes.
 
@@ -142,9 +173,13 @@ are reasonable defaults for 360 Hz; adjust for other sampling rates or morpholog
 Frequency-domain metrics depend on duration; ≥3–5 minutes recommended for stable LF/HF estimates.
 
 If you disable SPT, filtering still works but is cruder; expect slightly different peaks and HRV numbers.
+```
+
+---
 
 ## 🐛 Troubleshooting
 
+```text
 Too few NN intervals warning:
     Increase dur_s, reduce noise, or adjust filtering.
 
@@ -154,22 +189,36 @@ Missed/extra R-peaks:
 Powerline not fully removed:
     Ensure powerline_freq matches your region (50 vs 60 Hz).
     With SPT, notch quality is better.
+```
+
+---
 
 ## 📦 Repository layout (suggested)
 
+```text
 .
 ├── ecg_hrv_pipeline.m     # all code (top-level script + functions)
 └── README.md              # this file
+```
+
+---
 
 ## 📜 License
 
-Choose a license (e.g., MIT) and place it in LICENSE.
+Choose a license (e.g., MIT) and place it in `LICENSE`.
+
+---
+
 ## ✨ Citation
 
-If this helps your work, please cite the repository and acknowledge:
-“ECG + HRV Advanced Pipeline (MATLAB) — synthetic ECG, denoising, QRS detection, and HRV metrics demo.”
+If this helps your work, please cite the repository and acknowledge:  
+**“ECG + HRV Advanced Pipeline (MATLAB) — synthetic ECG, denoising, QRS detection, and HRV metrics demo.”**
+
+---
+
 ## 🚨 Medical Disclaimer
 
+```text
 This software is provided strictly for educational and research purposes.
 It is NOT intended for use in diagnosis, treatment, or any clinical decision-making.
 
@@ -178,7 +227,7 @@ for any medical conclusions.
 
 Use at your own risk. The authors and contributors assume no responsibility
 for any consequences arising from the use of this code.
-
+```
 
 
 
