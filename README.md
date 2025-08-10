@@ -177,22 +177,6 @@ If you disable SPT, filtering still works but is cruder; expect slightly differe
 
 ---
 
-##  Troubleshooting
-
-```text
-Too few NN intervals warning:
-    Increase dur_s, reduce noise, or adjust filtering.
-
-Missed/extra R-peaks:
-    Tweak win_ms, refractory time in detect_r_peaks, or bandpass edges.
-
-Powerline not fully removed:
-    Ensure powerline_freq matches your region (50 vs 60 Hz).
-    With SPT, notch quality is better.
-```
-
----
-
 ##  Repository layout
 
 ```text
