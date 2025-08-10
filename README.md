@@ -10,7 +10,7 @@ Full ECG processing stack: realistic signal synthesis, denoising, QRS detection,
 
 ---
 
-## 🧰 What’s inside
+##  What’s inside
 
 - **Signal synthesis**: Realistic ECG beats with RR variability (LF/HF) or AF-like jitter, plus common noise (baseline wander, powerline, white noise).
 - **Denoising**: Baseline removal, 50/60 Hz notch, bandpass (QRS emphasis).
@@ -24,7 +24,7 @@ Full ECG processing stack: realistic signal synthesis, denoising, QRS detection,
 
 ---
 
-## ⚡ Quick start
+##  Quick start
 
 1. Save the file as **`ecg_hrv_pipeline.m`**.
 2. Open in **MATLAB** (R2019b+ recommended).
@@ -36,7 +36,7 @@ If not, it falls back to robust moving-median/mean detrending and simple sinus f
 
 ---
 
-## ✅ Requirements
+##  Requirements
 
 - **MATLAB** (tested with 360 Hz sampling; any modern version should work)
 - **Optional**: Signal Processing Toolbox (for zero-phase IIR filtering)
@@ -45,7 +45,7 @@ No external data files needed — the ECG is synthesized.
 
 ---
 
-## 🛠️ Usage
+## Usage
 
 All parameters live at the top of the file:
 
@@ -68,7 +68,7 @@ add_powerline       = true;  powerline_freq  = 50;   powerline_amp_mV = 0.05;
 
 ---
 
-## 📌 Examples
+##  Examples
 
 ```text
 Default (sinus rhythm)
@@ -86,7 +86,7 @@ Shorter demo
 
 ---
 
-## 📊 Outputs
+##  Outputs
 
 **Printed in Command Window:**
 
@@ -110,7 +110,7 @@ SD1_ms, SD2_ms, cv_rr, ac_lag1, af_screen_positive
 
 ---
 
-## 🔎 Methods (high level)
+##  Methods (high level)
 
 ```text
 RR generation:
@@ -146,7 +146,7 @@ AF-like screen (heuristic):
 
 ---
 
-## 🔧 Key functions
+##  Key functions
 
 ```text
 generate_rr_series      — builds RR series (LF/HF or AF-like)
@@ -161,7 +161,7 @@ ternary                            — tiny helper
 
 ---
 
-## ⚠️ Notes & Caveats
+##  Notes & Caveats
 
 ```text
 Educational/research demo only.
@@ -177,7 +177,7 @@ If you disable SPT, filtering still works but is cruder; expect slightly differe
 
 ---
 
-## 🐛 Troubleshooting
+##  Troubleshooting
 
 ```text
 Too few NN intervals warning:
@@ -193,7 +193,7 @@ Powerline not fully removed:
 
 ---
 
-## 📦 Repository layout (suggested)
+##  Repository layout
 
 ```text
 .
@@ -202,14 +202,14 @@ Powerline not fully removed:
 ```
 
 
-## ✨ Citation
+##  Citation
 
 If this helps your work, please cite the repository and acknowledge:  
 **“ECG + HRV Advanced Pipeline (MATLAB) — synthetic ECG, denoising, QRS detection, and HRV metrics demo.”**
 
 ---
 
-## 🚨 Medical Disclaimer
+##  Medical Disclaimer
 
 
 This software is provided strictly for educational and research purposes.
