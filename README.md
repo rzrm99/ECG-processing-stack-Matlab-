@@ -201,13 +201,6 @@ Powerline not fully removed:
 └── README.md              # this file
 ```
 
----
-
-## 📜 License
-
-Choose a license (e.g., MIT) and place it in `LICENSE`.
-
----
 
 ## ✨ Citation
 
